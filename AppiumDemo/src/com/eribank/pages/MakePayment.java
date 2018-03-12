@@ -32,42 +32,53 @@ public static void setObjectsToMap()throws IOException {
 	hmap.putAll(prop.entrySet().stream()
             .collect(Collectors.toMap(e -> e.getKey().toString(), e -> e.getValue().toString())));	
 }    
-    public static WebElement textPhone(AndroidDriver<AndroidElement> driver)throws IOException {
+    private static WebElement textPhone(AndroidDriver<AndroidElement> driver)throws IOException {
     	setObjectsToMap();
     	element = driver.findElementByXPath(hmap.get("phone"));
     	return element;
     }
-    public static WebElement textName(AndroidDriver<AndroidElement> driver)throws IOException {
+    private static WebElement textName(AndroidDriver<AndroidElement> driver)throws IOException {
     	setObjectsToMap();
     	element = driver.findElementByXPath(hmap.get("name"));
     	return element;
     }
-    public static WebElement textAmount(AndroidDriver<AndroidElement> driver)throws IOException {
+    private static WebElement textAmount(AndroidDriver<AndroidElement> driver)throws IOException {
     	setObjectsToMap();
     	element = driver.findElementByXPath(hmap.get("amount"));
     	return element;
     }
-    public static WebElement selectCountry(AndroidDriver<AndroidElement> driver)throws IOException {
+    private static WebElement selectCountry(AndroidDriver<AndroidElement> driver)throws IOException {
     	setObjectsToMap();
     	element = driver.findElementByXPath(hmap.get("country"));
     	return element;
     }
-    public static WebElement buttonClickGermay(AndroidDriver<AndroidElement> driver)throws IOException {
+    private static WebElement buttonClickGermay(AndroidDriver<AndroidElement> driver)throws IOException {
     	setObjectsToMap();
 		new TouchAction((MobileDriver) driver).press(408, 1045).waitAction(Duration.ofMillis(2000)).moveTo(-108, 200).release().perform();
 		new TouchAction((MobileDriver) driver).press(408, 1045).waitAction(Duration.ofMillis(2000)).moveTo(-187, 286).release().perform();
     	element = driver.findElementByXPath(hmap.get("selectGermany"));
     	return element;
     }
-    public static WebElement buttonsendPayment(AndroidDriver<AndroidElement> driver)throws IOException {
+    private static WebElement buttonsendPayment(AndroidDriver<AndroidElement> driver)throws IOException {
     	setObjectsToMap();
     	element = driver.findElementByXPath(hmap.get("sendPaymentButton"));
     	return element;
     }
-    public static WebElement buttonYes(AndroidDriver<AndroidElement> driver)throws IOException {
+    private static WebElement buttonYes(AndroidDriver<AndroidElement> driver)throws IOException {
     	setObjectsToMap();
     	element = driver.findElementByXPath(hmap.get("yesPopup"));
     	return element;
+    }
+    
+    public Object doMakePayment(AndroidDriver<AndroidElement> driver, String phone, String name, String amount)throws Exception {
+		textPhone(driver).sendKeys(phone);
+		textName(driver).sendKeys(name);
+		textAmount(driver).sendKeys(amount);
+		selectCountry(driver).click();
+		buttonClickGermay(driver).click();
+		buttonsendPayment(driver).click();
+		buttonYes(driver).click();
+		return BaseEribank.getObject("com.eribank.pages.Dashboard");
     }
 
 }

@@ -1,9 +1,10 @@
 package com.eribank.base;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
@@ -48,4 +49,12 @@ public class BaseEribank {
 	  driver = new AndroidDriver<>(new URL("http://localhost:4723/wd/hub"), dc);
 	  return driver;
     }
+    
+	public static Object getObject(String className) throws ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		Class<?> clazz = Class.forName(className);
+		Constructor<?> ctor = clazz.getConstructor();
+		Object object = ctor.newInstance();
+		return object;
+	}
+
 }

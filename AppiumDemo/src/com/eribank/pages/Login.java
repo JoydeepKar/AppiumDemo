@@ -2,6 +2,7 @@ package com.eribank.pages;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Properties;
 import java.util.stream.Collectors;
@@ -30,20 +31,27 @@ public class Login {
                 .collect(Collectors.toMap(e -> e.getKey().toString(), e -> e.getValue().toString())));
     }
     
-    public static WebElement textUsername(AndroidDriver<AndroidElement> driver)throws IOException  {
+    private static WebElement textUsername(AndroidDriver<AndroidElement> driver)throws IOException  {
     	setObjectsToMap();
     	element = driver.findElementByXPath(hmap.get("userName"));
     	return element;
     }
-    public static WebElement textPassword(AndroidDriver<AndroidElement> driver)throws IOException  {
+    private static WebElement textPassword(AndroidDriver<AndroidElement> driver)throws IOException  {
     	setObjectsToMap();
     	element = driver.findElementByXPath(hmap.get("password"));
     	return element;
     }
-    public static WebElement buttonLogin(AndroidDriver<AndroidElement> driver)throws IOException  {
+    private static WebElement buttonLogin(AndroidDriver<AndroidElement> driver)throws IOException  {
     	setObjectsToMap();
     	element = driver.findElementByXPath(hmap.get("loginButton"));
     	return element;    	
+    }
+    
+    public static Object doLogin(AndroidDriver<AndroidElement> driver, String userName, String password) throws IOException, ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+    	textUsername(driver).sendKeys(userName);
+    	textPassword(driver).sendKeys(password);
+    	buttonLogin(driver).click();
+    	return BaseEribank.getObject("com.eribank.pages.Dashboard");
     }
 
 }

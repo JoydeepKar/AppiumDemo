@@ -30,15 +30,23 @@ public static void setObjectsToMap()throws IOException {
             .collect(Collectors.toMap(e -> e.getKey().toString(), e -> e.getValue().toString())));	
 }
 
-public static WebElement buttonMakePayment(AndroidDriver<AndroidElement> driver)throws IOException {
+private static WebElement buttonMakePayment(AndroidDriver<AndroidElement> driver)throws IOException {
 	setObjectsToMap();
 	element = driver.findElementByXPath(hmap.get("makePaymentButton"));
 	return element;    	
 }
-public static WebElement buttonLogout(AndroidDriver<AndroidElement> driver)throws IOException {
+private static WebElement buttonLogout(AndroidDriver<AndroidElement> driver)throws IOException {
 	setObjectsToMap();
 	element = driver.findElementByXPath(hmap.get("logoutButton"));
 	return element;    	
+}
+public Object clickButtonMakePayment(AndroidDriver<AndroidElement> driver)throws Exception{
+	buttonMakePayment(driver).click();
+	return BaseEribank.getObject("com.eribank.pages.MakePayment");
+}
+public Object clickButtonLogout(AndroidDriver<AndroidElement> driver)throws Exception{
+	buttonLogout(driver).click();
+	return BaseEribank.getObject("com.eribank.pages.Login");
 }
 
 

@@ -1,6 +1,7 @@
 package com.eribank.testcase;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,52 +35,12 @@ public class TestCaseMakePayment {
  }
  
 @Test
- public void makePayment()throws IOException {
+ public void makePayment()throws Exception {
 	for(int row = 0;row<rowCount;row++) {
-		
-		/*
-		 * Login starts here
-		 * 	
-		 */
-			Login.textUsername(driver).sendKeys(loginData.get("username").get(row));
-			Login.textPassword(driver).sendKeys(loginData.get("password").get(row));
-			Login.buttonLogin(driver).click();
-		/*
-		 * 
-		 * Login ends here
-		 */
-			
-		/*
-		 * 
-		 * 	Dashboard, click on Make Payment
-		 */
-			Dashboard.buttonMakePayment(driver).click();
-			
-		/*
-		 * 
-		 * Make payment starts here	
-		 */
-			MakePayment.textPhone(driver).sendKeys(paymentData.get("phone").get(row));
-			MakePayment.textName(driver).sendKeys(paymentData.get("name").get(row));
-			MakePayment.textAmount(driver).sendKeys(paymentData.get("amount").get(row));
-			MakePayment.selectCountry(driver).click();
-			MakePayment.buttonClickGermay(driver).click();
-			MakePayment.buttonsendPayment(driver).click();
-			MakePayment.buttonYes(driver).click();
-		/*
-		 * 
-		 * Make payment ends here	
-		 */
-			
-		/*
-		 * 
-		 * Logout starts here
-		 */
-			Dashboard.buttonLogout(driver).click();
-		/*
-		 * 
-		 * Logout ends here
-		 */
+		((Dashboard)((MakePayment)((Dashboard)Login.doLogin(driver, loginData.get("username").get(row), loginData.get("password").get(row)))
+				.clickButtonMakePayment(driver))
+				.doMakePayment(driver,paymentData.get("phone").get(row), paymentData.get("name").get(row), paymentData.get("amount").get(row)))
+				.clickButtonLogout(driver);
 	}
  }
  
