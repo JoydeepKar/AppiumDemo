@@ -5,6 +5,7 @@
 	<classpathentry kind="src" path="Screens"/>
 	<classpathentry kind="src" path="Data"/>
 	<classpathentry kind="src" path="Objects"/>
+	<classpathentry kind="src" path="Reports"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Appium"/>
 	<classpathentry kind="output" path="bin"/>

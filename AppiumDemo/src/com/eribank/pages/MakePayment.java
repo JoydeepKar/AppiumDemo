@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import org.openqa.selenium.WebElement;
 
 import com.eribank.base.BaseEribank;
+import com.eribank.utility.ReportUtility;
 
 import io.appium.java_client.MobileDriver;
 import io.appium.java_client.TouchAction;
@@ -76,6 +77,7 @@ public static void setObjectsToMap()throws IOException {
 		textAmount(driver).sendKeys(amount);
 		selectCountry(driver).click();
 		buttonClickGermay(driver).click();
+		ReportUtility.getInstance().catureScreenshot(driver);
 		buttonsendPayment(driver).click();
 		buttonYes(driver).click();
 		return BaseEribank.getObject("com.eribank.pages.Dashboard");
