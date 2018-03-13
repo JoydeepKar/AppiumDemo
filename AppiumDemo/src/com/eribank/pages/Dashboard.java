@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import org.openqa.selenium.WebElement;
 
 import com.eribank.base.BaseEribank;
+import com.eribank.utility.ReportUtility;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
@@ -41,6 +42,8 @@ private static WebElement buttonLogout(AndroidDriver<AndroidElement> driver)thro
 	return element;    	
 }
 public Object clickButtonMakePayment(AndroidDriver<AndroidElement> driver)throws Exception{
+	Thread.sleep(2000);
+	ReportUtility.getInstance().catureScreenshot(driver,"Dashboard");
 	buttonMakePayment(driver).click();
 	return BaseEribank.getObject("com.eribank.pages.MakePayment");
 }

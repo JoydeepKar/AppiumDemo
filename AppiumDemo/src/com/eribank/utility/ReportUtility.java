@@ -18,9 +18,11 @@ import io.appium.java_client.android.AndroidElement;
 
 public class ReportUtility {
 	private static ReportUtility single_instance = null;
-	ExtentHtmlReporter htmlReporter;
-	ExtentReports extent;
-	ExtentTest test;
+	static ExtentHtmlReporter htmlReporter;
+	static ExtentReports extent;
+	static ExtentTest test;
+	static File src;
+	static String filename;
     // private constructor restricted to this class itself
     private ReportUtility() {
     	//do nothing
@@ -40,11 +42,12 @@ public class ReportUtility {
  		extent.attachReporter(htmlReporter);
  		htmlReporter.setAppendExisting(true);
     }
-    public void catureScreenshot(AndroidDriver<AndroidElement> driver)throws Exception{
-	    File src= ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-	    String filename = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date());
+    public void catureScreenshot(AndroidDriver<AndroidElement> driver, String description)throws Exception{
+	    src= ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+	    filename = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date());
 	    FileUtils.copyFile(src, new File("Screens/"+filename+".png"));
-	    test.pass("details", MediaEntityBuilder.createScreenCaptureFromPath("Screens/"+filename+".png").build());
+	    test.pass(description, MediaEntityBuilder.createScreenCaptureFromPath("../Screens/"+filename+".png").build());
+	    test.addScreenCaptureFromPath("../Screens/"+filename+".png");
     }
     public void startTest(String name, String description) {
 	    test = extent.createTest("Make Payment", "This is to make a payment");

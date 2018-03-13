@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import org.openqa.selenium.WebElement;
 
 import com.eribank.base.BaseEribank;
+import com.eribank.utility.ReportUtility;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
@@ -47,9 +48,11 @@ public class Login {
     	return element;    	
     }
     
-    public static Object doLogin(AndroidDriver<AndroidElement> driver, String userName, String password) throws IOException, ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+    public static Object doLogin(AndroidDriver<AndroidElement> driver, String userName, String password) throws Exception {
+    	ReportUtility.getInstance().addComments("Enter username and password");
     	textUsername(driver).sendKeys(userName);
     	textPassword(driver).sendKeys(password);
+    	ReportUtility.getInstance().catureScreenshot(driver,"LogIn");
     	buttonLogin(driver).click();
     	return BaseEribank.getObject("com.eribank.pages.Dashboard");
     }
