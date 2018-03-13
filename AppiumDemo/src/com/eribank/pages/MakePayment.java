@@ -77,9 +77,9 @@ public static void setObjectsToMap()throws IOException {
 		textAmount(driver).sendKeys(amount);
 		selectCountry(driver).click();
 		buttonClickGermay(driver).click();
-		ReportUtility.getInstance().catureScreenshot(driver,"Make Payment");
+		ReportUtility.getInstance().catureScreenshot(driver,"Make Payment",100);
 		buttonsendPayment(driver).click();
-		ReportUtility.getInstance().catureScreenshot(driver,"Make Payment Pop up");
+		ReportUtility.getInstance().catureScreenshot(driver,"Make Payment Pop up",100);
 		buttonYes(driver).click();
 		return BaseEribank.getObject("com.eribank.pages.Dashboard");
     }

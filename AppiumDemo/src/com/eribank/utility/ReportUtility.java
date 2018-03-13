@@ -42,7 +42,8 @@ public class ReportUtility {
  		extent.attachReporter(htmlReporter);
  		htmlReporter.setAppendExisting(true);
     }
-    public void catureScreenshot(AndroidDriver<AndroidElement> driver, String description)throws Exception{
+    public void catureScreenshot(AndroidDriver<AndroidElement> driver, String description, long millis)throws Exception{
+    	Thread.sleep(millis);
 	    src= ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 	    filename = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date());
 	    FileUtils.copyFile(src, new File("Screens/"+filename+".png"));
@@ -50,7 +51,7 @@ public class ReportUtility {
 	    test.addScreenCaptureFromPath("../Screens/"+filename+".png");
     }
     public void startTest(String name, String description) {
-	    test = extent.createTest("Make Payment", "This is to make a payment");
+	    test = extent.createTest(name, description);
 	    test.assignAuthor("Joydeep Kar");
     }
     public void endSetup() {

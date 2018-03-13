@@ -43,7 +43,7 @@ private static WebElement buttonLogout(AndroidDriver<AndroidElement> driver)thro
 }
 public Object clickButtonMakePayment(AndroidDriver<AndroidElement> driver)throws Exception{
 	Thread.sleep(2000);
-	ReportUtility.getInstance().catureScreenshot(driver,"Dashboard");
+	ReportUtility.getInstance().catureScreenshot(driver,"Dashboard",100);
 	buttonMakePayment(driver).click();
 	return BaseEribank.getObject("com.eribank.pages.MakePayment");
 }
