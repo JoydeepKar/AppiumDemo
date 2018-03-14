@@ -40,7 +40,7 @@ public class TestCaseCreateLead {
 			ReportUtility.getInstance().startTest("Create Lead", "This is to create a new Lead");
 			ReportUtility.getInstance().addComments("Script starts from here");
 			 ((Lead)Dashboard.selectLeadfromMenu(driver))
-			.createNewLead(driver, createLead.get("leadstatus").get(row),createLead.get("firstname").get(row),createLead.get("lastname").get(row),createLead.get("email").get(row));
+			.createNewLead(driver, createLead.get("leadstatus").get(row),createLead.get("nameprefix").get(row),createLead.get("firstname").get(row),createLead.get("lastname").get(row),createLead.get("email").get(row),createLead.get("company").get(row));
 			ReportUtility.getInstance().addComments("Script ends here");
 		}
 		ReportUtility.getInstance().endSetup();
