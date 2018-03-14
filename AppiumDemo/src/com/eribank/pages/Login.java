@@ -48,6 +48,7 @@ public class Login {
     }
     
     public static Object doLogin(AndroidDriver<AndroidElement> driver, String userName, String password) throws Exception {
+    	if(userName == "") {System.out.println("BLANK");}
     	ReportUtility.getInstance().addComments("Enter username and password");
     	textUsername(driver).sendKeys(userName);
     	textPassword(driver).sendKeys(password);

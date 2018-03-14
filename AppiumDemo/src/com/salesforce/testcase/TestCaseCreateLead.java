@@ -24,29 +24,30 @@ public class TestCaseCreateLead {
 	HashMap<String, ArrayList<String>> createLead;
 	int rowCount;
  
- @Before
- public void setUp() throws MalformedURLException {
-	 		driver = obj.getBase();
-	 		//loginData = ExcelUtility.readTestDataFile ("Data/DemoData.xls", "Login");
-	 		createLead = ExcelUtility.readTestDataFile ("Data/DemoDataSalesforce.xls", "CreateLead");
-	 		rowCount = ExcelUtility.getRowCount("Data/DemoDataSalesforce.xls", "CreateLead");
-	 		ReportUtility.getInstance().doReportSetup();
- }
- 
-@Test
- public void createLead()throws Exception {
-	//for(int row = 0;row<rowCount;row++) {
-		ReportUtility.getInstance().startTest("Create Lead", "This is to create a new Lead");
-		ReportUtility.getInstance().addComments("Script starts from here");
-		 ((Lead)Dashboard.selectLeadfromMenu(driver))
-		.clickNewLead(driver);
-		ReportUtility.getInstance().addComments("Script ends here");
-	//}
-	ReportUtility.getInstance().endSetup();
- }
- 
- @After
- public void tearDown() {
-	 		driver.quit();
- }
+	 @Before
+	 public void setUp() throws MalformedURLException {
+		 		driver = obj.getBase();
+		 		//loginData = ExcelUtility.readTestDataFile ("Data/DemoData.xls", "Login");
+		 		createLead = ExcelUtility.readTestDataFile ("Data/DemoDataSalesforce.xls", "CreateLead");
+		 		rowCount = ExcelUtility.getRowCount("Data/DemoDataSalesforce.xls", "CreateLead");
+		 		ReportUtility.getInstance().doReportSetup();
+	 }
+	 
+	@SuppressWarnings("static-access")
+	@Test
+	 public void createLead()throws Exception {
+		for(int row = 0;row<rowCount;row++) {
+			ReportUtility.getInstance().startTest("Create Lead", "This is to create a new Lead");
+			ReportUtility.getInstance().addComments("Script starts from here");
+			 ((Lead)Dashboard.selectLeadfromMenu(driver))
+			.createNewLead(driver, createLead.get("leadstatus").get(row),createLead.get("firstname").get(row),createLead.get("lastname").get(row),createLead.get("email").get(row));
+			ReportUtility.getInstance().addComments("Script ends here");
+		}
+		ReportUtility.getInstance().endSetup();
+	 }
+	 
+	 @After
+	 public void tearDown() {
+		 		driver.quit();
+	 }
 }

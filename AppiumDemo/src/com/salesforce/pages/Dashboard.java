@@ -47,7 +47,7 @@ public class Dashboard {
 	}
 
 	public static Object selectLeadfromMenu(AndroidDriver<AndroidElement> driver)throws Exception{
-		Thread.sleep(6000);
+		Thread.sleep(8000);
 		//System.out.println("waited 6 sec");
 		buttonHamburgerMenu(driver).click();
 		//System.out.println("menu clicked");
