@@ -174,7 +174,7 @@ public class Lead {
 		inputFirstName(driver).sendKeys(fname);
 		inputLastName(driver).sendKeys(lname);	
 		inputEmail(driver).sendKeys(email);
-		ReportUtility.getInstance().catureScreenshot(driver, "Entered First Name and Last Name", 2000);
+		ReportUtility.getInstance().catureScreenshot(driver, "Entered Lead Status, First Name, Last Name, Email", 2000);
 		
 		new TouchAction((MobileDriver) driver).press(108, 1050).waitAction(Duration.ofMillis(2000)).moveTo(-108, 200).release().perform();
 
