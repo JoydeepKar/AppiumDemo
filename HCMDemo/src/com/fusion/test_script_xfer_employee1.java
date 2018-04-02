@@ -139,7 +139,6 @@ public class test_script_xfer_employee1 {
 		//driver.findElement(By.xpath("//a[@id='pt1:nv_itemNode_workforce_management_person_management']")).click();
 		element = HCMUtility.waitForObject(By.xpath("//a[@id='pt1:nv_itemNode_workforce_management_person_management']"), driver);
 		element.click();
-		//Thread.sleep(5000);	
 		//driver.findElement(By.xpath("//input[@id='_FOpt1:_FOr1:0:_FOSritemNode_workforce_management_person_management:0:MAt1:0:pt1:Perso1:0:SP3:q1:value00::content']")).clear();
 		//driver.findElement(By.xpath("//input[@id='_FOpt1:_FOr1:0:_FOSritemNode_workforce_management_person_management:0:MAt1:0:pt1:Perso1:0:SP3:q1:value00::content']")).sendKeys(hash.get("Name").get(0));
 		HCMUtility.inputUsingAction(By.xpath("//input[@id='_FOpt1:_FOr1:0:_FOSritemNode_workforce_management_person_management:0:MAt1:0:pt1:Perso1:0:SP3:q1:value00::content']"), driver, hash.get("Name").get(0));
