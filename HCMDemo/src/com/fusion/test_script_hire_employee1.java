@@ -185,7 +185,7 @@ public class test_script_hire_employee1 {
 		test_case_3();
 	}
 	public void test_case_3() throws Exception {
-		//for(int i = 0;i<getRowCount("Data/data_HireEmployee.xls", "Sheet1");i++) {
+		for(int i = 0;i<getRowCount("Data/data_HireEmployee.xls", "Sheet1");i++) {
 			
 		driver.get("https://efrx-test.login.ap4.oraclecloud.com/oam/server/obrareq.cgi?encquery%3DQn5RxkqBg9O0Yx%2Fjvi1vYueICFVYGJ8PlTl%2FqW51rzMaBg7%2BZV8CBY4Tsy8F%2BXL8UEZafoUq32FllBIjbfLMODAH9IcyNL%2BMRurAbzzJ2xFmQN7g4QkS7P9zRxq1zMxl1yoknxEsmvKwSZtwkPpEelgjvLQY8GA6nRfTh7PuQadV%2FZoFGGYlNIDPt5%2BLw46DdaxGCu958enCE1gBAFOhNM8VUMG65bB0jONqe38c%2Fg9stdGkAYdv2PmyJVjuDy%2BAo1E79R%2FfPBxXepNgQz9MNJN24glh%2Bi4oO%2FyhPsiBJGfHHTgulY8FuKWp0gRCE3WvQHHQB8LjVEiZhXwopOCUIfpndXb0oMUm9pfhHaCEySmKVIT1gktZmR23jlS%2BmdiEJ31Hb%2BR4Vx10ifL2AEB75%2B%2BGU1pdHS4ZeP4K%2BQn%2FbM41cHm47ELzBC%2B5lGs6LEKBrZNy%2FGOx4sI1cvX2Iq0RIqxgCPpNBJZyODyeJCxjl6XChOf5NFSgzcQG8Dfp5co23ZH0KQbHcvyqeCTV1vUgvA%3D%3D%20agentid%3DOraFusionApp_11AG%20ver%3D1%20crmethod%3D2&ECID-Context=1.005Pat7DqoX6mJSLmEH7iZ0003gP00008K%3BkXjE");
 		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
@@ -302,7 +302,7 @@ public class test_script_hire_employee1 {
 		driver.findElement(By.xpath("//input[@id='_FOpt1:_FOr1:0:_FOSritemNode_workforce_management_new_person:0:MAnt2:1:pt1:pt_r1:0:pt1:SP1:NewPe1:0:pt_r2:0:AT2:_ATp:table2:0:it1::content']")).sendKeys(hash.get("National ID").get(0));
 		driver.findElement(By.xpath("//input[@id='_FOpt1:_FOr1:0:_FOSritemNode_workforce_management_new_person:0:MAnt2:1:pt1:pt_r1:0:pt1:SP1:NewPe1:0:pt_r2:0:AT2:_ATp:table2:0:it1::content']")).sendKeys(Keys.ENTER);
 		//driver.findElement(By.xpath("//div[@id='_FOpt1:_FOr1:0:_FOSritemNode_workforce_management_new_person:0:MAnt2:1:pt1:pt_r1:0:pt1:SP1:tt1:next']/a/span")).click();
-		takeSnapShot(driver, "National ID, Type");
+		takeSnapShot(driver, "National Idtentifiers");
 		element = new WebDriverWait(driver,25).until(ExpectedConditions.visibilityOfAllElements(driver.findElement(By.xpath("//div[@id='_FOpt1:_FOr1:0:_FOSritemNode_workforce_management_new_person:0:MAnt2:1:pt1:pt_r1:0:pt1:SP1:tt1:next']/a/span")))).get(0);
 		//element.click();
 		retryingFindClick(By.xpath("//div[@id='_FOpt1:_FOr1:0:_FOSritemNode_workforce_management_new_person:0:MAnt2:1:pt1:pt_r1:0:pt1:SP1:tt1:next']/a/span"));
@@ -363,6 +363,7 @@ public class test_script_hire_employee1 {
 		new Select(driver.findElement(By.xpath("//select[@id='_FOpt1:_FOr1:0:_FOSritemNode_workforce_management_new_person:0:MAnt2:1:pt1:pt_r1:1:pt1:SP1:Perso2:0:pt_r3:0:soc2::content']"))).selectByVisibleText(hash.get("Marital Status").get(0));
 		new Select(driver.findElement(By.xpath("//select[@id='_FOpt1:_FOr1:0:_FOSritemNode_workforce_management_new_person:0:MAnt2:1:pt1:pt_r1:1:pt1:SP1:Perso2:0:pt_r3:0:soc4::content']"))).selectByVisibleText(hash.get("Religion").get(0));
 		new Select(driver.findElement(By.xpath("//select[@id='_FOpt1:_FOr1:0:_FOSritemNode_workforce_management_new_person:0:MAnt2:1:pt1:pt_r1:1:pt1:SP1:Perso2:0:pt_r3:0:hoc2::content']"))).selectByVisibleText(hash.get("Highest Education Level").get(0));
+		takeSnapShot(driver, "Email, Legislative Detail");
 		driver.findElement(By.xpath("//div[@id='_FOpt1:_FOr1:0:_FOSritemNode_workforce_management_new_person:0:MAnt2:1:pt1:pt_r1:1:pt1:SP1:tt1:next']")).click();
 		//Thread.sleep(5000);
 		//Thread.sleep(5000);
@@ -505,6 +506,16 @@ public class test_script_hire_employee1 {
 		element = new WebDriverWait(driver,25).until(ExpectedConditions.visibilityOfAllElements(driver.findElement(By.xpath("//button[@id='_FOpt1:_FOr1:0:_FOSritemNode_workforce_management_new_person:0:MAnt2:1:pt1:pt_r1:4:pt1:AP1:tt1:okConfirmationDialog']")))).get(0);
 		element.click();
 		senseCursorState(driver);
+		element = new WebDriverWait(driver,25).until(ExpectedConditions.visibilityOfAllElements(driver.findElement(By.id("_FOpt1:_UIScmil1u")))).get(0);
+		element.click();
+		senseCursorState(driver);
+		element = new WebDriverWait(driver,25).until(ExpectedConditions.visibilityOfAllElements(driver.findElement(By.id("_FOpt1:_UISlg1")))).get(0);
+		element.click();
+		senseCursorState(driver);
+		element = new WebDriverWait(driver,25).until(ExpectedConditions.visibilityOfAllElements(driver.findElement(By.id("Confirm")))).get(0);
+		element.click();
+		senseCursorState(driver);
+		//Confirm
 		//_FOpt1:_FOr1:0:_FOSritemNode_workforce_management_new_person:0:MAnt2:1:pt1:pt_r1:4:pt1:AP1:tt1:confirmationDialog::_ttxt
 		//_FOpt1:_FOr1:0:_FOSritemNode_workforce_management_new_person:0:MAnt2:1:pt1:pt_r1:4:pt1:AP1:tt1:confirmationDialog::_ttxt
 		//submit = Keys.chord(Keys.ALT, "o");
@@ -514,6 +525,6 @@ public class test_script_hire_employee1 {
 		//senseCursorState(driver);
 		//Thread.sleep(5000);
 		//driver.findElement(By.xpath("//button[@id='_Fopt1:_FOr1:1:_FOSritemNode_workforce_management_new_person:0:MAnt2:1:pt1:pt_r1:4:pt1:AP1:tt1:okConfirmationDialog']")).click();
-		//}
+		}
 	}
 }
